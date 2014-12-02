@@ -1,7 +1,7 @@
 * { box-sizing: border-box }
 
 :root {
-    font-size: 18pt;
+    font-size: 11pt;
 }
 
 .page-overlay {
@@ -22,7 +22,7 @@ body {
     margin: 0;
     background-color: cadetblue;
     font-family: "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;'
-    color: cadetblue;
+color: cadetblue;
 }
 
 .note {
@@ -32,7 +32,7 @@ body {
     margin:0;
 }
 
-.no_ul { text-decoration: none }
+.no-ul { text-decoration: none }
 
 .modal {
     position: absolute;
@@ -67,7 +67,7 @@ body {
 
 
 
-.header_subreddit {
+.header-subreddit {
     margin-top: -10px;
 }
 
@@ -110,13 +110,13 @@ input[name=numResults] {
     text-align: right;
 }
 
-.search_group {
+.search-group {
     margin: 5px;
     padding: 5px;
     width: 20%;
 }
 
-.result_img {
+.result-img {
     margin:5px;
     border-radius: 20px;
     border: 1px floralwhite solid;
@@ -127,15 +127,8 @@ input[name=numResults] {
 
 
 
-a[data-image]:hover:after {
-    position: relative;
-    display: block;
-    top:1rem left:10px;
-    border-radius: 200px;
-    background-color: pink ;
-    width: 2px;
-    height: 2px;
-    content: url('http://i.imgur.com/JJvmQQf.jpg');
+.hover-image {
+
 }
 
 .results {
@@ -143,7 +136,7 @@ a[data-image]:hover:after {
     position: relative;
 }
 
-.header_img {
+.header-img {
     height: 50px;
     width: 50px;
 }
@@ -164,7 +157,7 @@ a[data-image]:hover:after {
     text-align: right;
 }
 
-.page_footer {
+.page-footer {
     clear: both;
     font-size: 0.5rem;
     font-style: italic;
@@ -183,7 +176,7 @@ a[data-image]:hover:after {
 }
 
 .right {
-   float: right;
+    float: right;
     display: inline-block;
     margin-right:10px;
 }

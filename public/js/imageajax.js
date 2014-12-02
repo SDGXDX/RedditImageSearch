@@ -4,55 +4,53 @@
 
     $(document).ready(function() {
 
+        var pCache = {
+            // the point of this object is to 'cache' the jQuery internal reference for quick lookup
+            // may not matter much, but its extra performance at very little time cost.
+            // Plus, it gives me a quick inventory of important page elements.
+            $results: $('.results'),
+            $searchBtn: $('button'),
+            $sortItems: $('.sortItem'),
+            $overlay: $('.page-overlay'),
+
+            inputFields: {
+                $sub: $('input[name=subreddit]'),
+                $search: $('input[name=search]'),
+                $restrictYN: $('restrictYN'),
+                $resultsNum: $('#resultsNum')
+            }
+
+        };
+
+
         $('p[name=more-options]').on('click', function() {
             $('.page-overlay').toggleClass('.hidden');
         });
 
 
-        $.ajaxSetup({dataType: "json"});
-        var $sortItem = $('.sortItem');
+        $.ajaxSetup({dataType: "json", cache: true });
+
 
         // NAV class toggle
-        $('.sortItem').on('click', function () {
+        pCache.$sortItems.on('click', function () {
             // remove all selected
-            $sortItem.removeClass('selected');
+            pCache.$sortItems.removeClass('selected');
             // dont click through!
             event.preventDefault();
             // TOOOOOOOOGGGGGGGGGGGGGLE!
             $(this).toggleClass('selected');
             });
 
-
-    // REFACTORED for cleaner code.
-    /*
-        I'm not chaining promises, or anything complex so jQuery's normal promise will work.
-        For more complex stuff, like multiple callbacks, Q.js would be a better choice.
-    */
-        var pCache = {
-            // the point of this object is to 'cache' the jQuery internal reference for quick lookup
-            // may not matter much, but its extra performance at very little time cost.
-            // Plus, it gives me a quick inventory of important page elements.
-
-            $results: $('.results'),
-            $sub: $('input[name=subreddit]'),
-            //$sub: document.querySelector('[name=subreddit]'),
-            $search: $('input[name=search]'),
-            $sortItems: $('.sortItem'),
-            $overlay: $('.page-overlay'),
-            $restrictYN: $('restrictYN'), //TODO: Radiobutton cache
-            $resultsNum: $('#resultsNum')
-
-        };
-
         var redditSearch = {
 
-            getUrl : function() {
+
+            getUrl: function () {
                 var u = (
-                "http://www.reddit.com/r/" + pCache.$sub.val()
-                + "/search.json?q=" + pCache.$search.val()
-                + "&restrict_sr=" + "true"  //TODO: Pull value from Restrict subreddit radio
-                + "&sort=" + $('.sortItem.selected').text().toLowerCase() //TODO: Refactor this? set name attributes and use that?
-                + "&show=all&limit=" + pCache.$resultsNum.val()
+                "http://www.reddit.com/r/" + pCache.inputFields.$sub.val()
+                + "/search.json?q=" + pCache.inputFields.$search.val()
+                + "&restrict_sr=" + (pCache.inputFields.$restrictYN.val()===true ? 'true' : 'false')
+                + "&sort=" + pCache.$sortItems.find(".selected").text().toLowerCase()
+                + "&show=all&limit=" + pCache.inputFields.$resultsNum.val()
                 );
                 console.log(u);
                 return u;
@@ -64,7 +62,9 @@
 
 
             renderImages : function(rData) {
-
+                /*
+                TODO: This is pulling all results and parsing out the images. There should be a way to JUST fetch images.
+                 */
                 pCache.$results.text('');
                 var d = rData.data.children;
                 var goodResults = [];
@@ -72,15 +72,15 @@
                     // image?
                     if (d[i].data.url.match(/(jpg|gif|png)$/)) {
                         goodResults.push(
-                            //TODO: Add data tag with real image URL for hover
-                            "<a data-image='" + d[i].data.url + "' href='http://reddit.com" + d[i].data.permalink + "' target='_blank'><img class='result_img' src='" + d[i].data.thumbnail + "' /></a>"
+                            "<a data-image='" + d[i].data.url + "' href='http://reddit.com" + d[i].data.permalink + "' target='_blank'><img class='result-img' src='" + d[i].data.thumbnail + "' /></a>"
                         );
                     }
                 }
 
                 if (goodResults.length > 0) {
+                    pCache.$results.hide();
                     pCache.$results.append(goodResults.join(''));
-                    pCache.$results.fadeIn(2000);
+                    pCache.$results.fadeIn(600);
                 } else {
                     pCache.$results.append('<h1>No images found.</h1>');
 
@@ -105,16 +105,15 @@
 
 
 
+
        // Search! Much cleaner now.
 
-        $('#searchBtn').on('click', function () {
+        pCache.$searchBtn.on('click', function () {
             redditSearch.getImages()
                 .done(redditSearch.renderImages)
                 .fail(redditSearch.renderFailed);
-
-
-
         });
+
     }); // document.ready
 })(); //IIFE
 

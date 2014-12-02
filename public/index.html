@@ -6,35 +6,35 @@
 <body>
 <div class="page-overlay hidden">
 <aside class="modal">
-    <p><label for="resultsNum">Number of results to return (10-100)</label> <input name="resultsNum" id="resultsNum" type="number" min="10" max="100" value="10"></p>
+    <p><label for="resultsNum">Number of results to return (10-100)</label> <input name="resultsNum" id="resultsNum" type="number" min="10" max="100" value="100"></p>
     <p><label for="restrictYN">Restrict to subreddit?</label>
         <span class="right" id="restrictYN">
-        <input type="radio" name="restrictYN" id="Y" value="Yes"><label for="Y">Yes</label>
+        <input type="radio" name="restrictYN" id="Y" value="Yes" checked ><label for="Y">Yes</label>
         <input type="radio" name="restrictYN" id="N" value="No"><label for="N">No</label></span></p>
         <input type="button" class="btn right" id="options-close" value="OK"/>
 </aside>
 </div>
 <header class="header">
-    <img src="https://d2npbuaakacvlz.cloudfront.net/images/uploaded/merchant-product-max/2013/12/3/black-version-41-1386092794.YfMjPox1R0KtrJazpaqK" class="header_img"> Reddit Image Search
+    <img src="https://d2npbuaakacvlz.cloudfront.net/images/uploaded/merchant-product-max/2013/12/3/black-version-41-1386092794.YfMjPox1R0KtrJazpaqK" class="header-img"> Reddit Image Search
     <section class="options right">
         <p class="sort-by">
-            <a href="#" class="sortItem no_ul">Relevance</a> |
-            <a href="#" class="sortItem selected no_ul">New</a> |
-            <a href="#" class="sortItem no_ul">Top</a> |
-            <a href="#" class="sortItem no_ul">Comments</a>
+            <a href="#" class="sortItem no-ul">Relevance</a> |
+            <a href="#" class="sortItem selected no-ul">New</a> |
+            <a href="#" class="sortItem no-ul">Top</a> |
+            <a href="#" class="sortItem no-ul">Comments</a>
         </p>
-    <p class="header_subreddit">/r/<input type="text" name="subreddit"></p>
+    <p class="header-subreddit">/r/<input type="text" name="subreddit"></p>
     </section>
 
 </header>
-<div class="search_group">
+<div class="search-group">
 <input type="text" name="search">
 <button class="btn" id="searchBtn">Search</button>
-    <p class="note" name="more-options"><a id="more-options" class="note no_ul" href="#">More options</a></p>
+    <p class="note" name="more-options"><a id="more-options" class="note no-ul" href="#">More options</a></p>
 </div>
 <div class="results"></div>
 
-<footer class="page_footer"><p class="left">Inspired by <a href="http://frontendmasters.com">FrontEnd Masters</a> Intro To Web Development AJAX exercise</p>
+<footer class="page-footer"><p class="left">Inspired by <a href="http://frontendmasters.com">FrontEnd Masters</a> Intro To Web Development AJAX exercise</p>
 <p class="right">Work done with jQuery, HTML5, CSS & NodeJS</p>
 </footer>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
