@@ -1,0 +1,189 @@
+* { box-sizing: border-box }
+
+:root {
+    font-size: 18pt;
+}
+
+.page-overlay {
+    position:fixed;
+    background-color: black;
+    z-index: 99;
+    opacity: 0.8;
+    width:100%;
+    height:100%;
+}
+
+.hidden {
+    display: none;
+}
+
+
+body {
+    margin: 0;
+    background-color: cadetblue;
+    font-family: "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;'
+    color: cadetblue;
+}
+
+.note {
+    font-style: italic;
+    color: white;
+    display: block;
+    margin:0;
+}
+
+.no_ul { text-decoration: none }
+
+.modal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding-left:15px;
+    padding-right:10px;
+    width:320px;
+    height: 125px;
+    background-color: white;
+    box-shadow: 0 0 0 4px cadetblue;
+    border-radius: 10px;
+    opacity: 1;
+}
+
+
+
+.header {
+    color: cadetblue;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    padding:0;
+    margin: 0;
+    background-color: white;
+    box-shadow: 2px 2px;
+}
+
+
+
+
+.header_subreddit {
+    margin-top: -10px;
+}
+
+
+input:valid + label {
+    color: lawngreen;
+}
+
+input:invalid + label {
+    border: 1px solid darkred;
+}
+
+input:out-of-range {
+    background-color: pink;
+}
+
+
+
+
+input[name=subreddit] {
+    position: relative;
+    bottom: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+input[name=numResults] {
+    width:45px;
+    padding:1px;
+}
+
+.btn {
+    border-radius: 5px;
+    background-color: white;
+    color: cadetblue;
+    font-weight: bold;
+}
+
+.options {
+    font-style: italic;
+    text-align: right;
+}
+
+.search_group {
+    margin: 5px;
+    padding: 5px;
+    width: 20%;
+}
+
+.result_img {
+    margin:5px;
+    border-radius: 20px;
+    border: 1px floralwhite solid;
+    display: inline-block;
+    overflow:hidden;
+    width: 70px;
+}
+
+
+
+a[data-image]:hover:after {
+    position: relative;
+    display: block;
+    top:1rem left:10px;
+    border-radius: 200px;
+    background-color: pink ;
+    width: 2px;
+    height: 2px;
+    content: url('http://i.imgur.com/JJvmQQf.jpg');
+}
+
+.results {
+    padding: 10px;
+    position: relative;
+}
+
+.header_img {
+    height: 50px;
+    width: 50px;
+}
+
+.sortItem.selected {
+    font-weight: bold;
+}
+
+.sortItem {
+    font-weight: normal;
+    text-decoration: none;
+    color: cadetblue;
+}
+
+.sort-by {
+    font-size: 0.7rem;
+    font-style: normal;
+    text-align: right;
+}
+
+.page_footer {
+    clear: both;
+    font-size: 0.5rem;
+    font-style: italic;
+    position:fixed;
+    width:100%;
+    bottom: 0;
+
+    margin: 0;
+    background-color: #ffff99;
+}
+
+.left {
+    float: left;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.right {
+   float: right;
+    display: inline-block;
+    margin-right:10px;
+}
